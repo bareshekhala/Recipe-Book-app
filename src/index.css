@@ -1,0 +1,34 @@
+/* fonts */ 
+:root { --sans: 'Roboto', sans-serif; --heading: 'Poppins', sans-serif; --mono: ui-monospace, Consolas, monospace; }
+
+body{
+  font-family: "Roboto"
+}
+#navbar{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+border: 1px solid black;
+}
+#logo{
+  width: 60px;
+}
+#sidebar{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 100%;
+  border: 1px solid black;
+  width: fit-content;
+  padding: 10px;
+}
+#app{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+#footer{
+  padding: 30px;
+  border: 1px solid black;
+}
