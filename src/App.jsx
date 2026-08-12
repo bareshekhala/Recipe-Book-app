@@ -10,9 +10,14 @@ function App() {
   return (
     <div id="app">
       <Navbar />
-      <Sidebar />
+      
+      <div id="main-view">
+        <Sidebar />
+        <List />
+      </div>
+
       <Footer />
-<List/>
+      
     </div>
   );
 }
