@@ -1,24 +1,56 @@
-import React from "react";
-import Navbar from "./components/homePage/Navbar";
-import Footer from "./components/homePage/Footer";
-import Sidebar from "./components/homePage/Sidebar";
-import List from "./components/List";
+import { useState } from "react";
+//data
+import allFoods from "./data/recipes.json";
 
-import ListItem from "./components/ListItem";
+//components
+import React from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
+
+//Pages
+import List from "./Pages/DashboardPage";
+import About from "./Pages/AboutPage";
+import DetailsPage from "./Pages/DetailsPage";
+import NotFoundPage from "./Pages/NotFoundPage";
+
+//Router
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  return (
-    <div id="app">
-      <Navbar />
-      
-      <div id="main-view">
-        <Sidebar />
-        <List />
-      </div>
+  const [foodList, setFoodList] = useState(allFoods);
 
-      <Footer />
-      
-    </div>
+  function handleDelete(id) {
+    const newFoodList = foodList.filter((food) => {
+      return food.id !== id;
+    });
+    setFoodList(newFoodList);
+  }
+
+  return (
+    <>
+      <div id="app">
+        <Navbar />
+
+        <div id="main-view">
+          <Sidebar />
+          <Routes>
+            <Route
+              path="/"
+              element={<List foodList={foodList} handleDelete={handleDelete} />}
+            />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/:foodId"
+              element={<DetailsPage foodList={foodList} />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+
+        <Footer />
+      </div>
+    </>
   );
 }
 

@@ -1,16 +1,6 @@
-import React, { useState } from "react";
-import ListItem from "./ListItem";
-import allFoods from "../data/recipes.json";
+import ListItem from "../components/ListItem";
 
-function List() {
-  const [foodList, setFoodList] = useState(allFoods);
-
-  function handleDelete(id) {
-    const newFoodList = foodList.filter((food) => {
-      return food.id !== id;
-    });
-    setFoodList(newFoodList);
-  }
+function List({foodList, handleDelete}) {
 
   return (
     <div>

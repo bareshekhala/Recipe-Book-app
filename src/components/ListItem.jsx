@@ -1,5 +1,7 @@
 import React from "react";
-import List from "./List";
+import List from "../Pages/DashboardPage";
+import { Link } from "react-router-dom";
+
 function ListItem({ id, name, calories, image, servings, handleDelete }) {
   return (
     <div id="card">
@@ -14,6 +16,7 @@ function ListItem({ id, name, calories, image, servings, handleDelete }) {
         {calories > 400 ? <p> High in calories</p> : null}
 
         <button onClick={() => handleDelete(id)}>Delete</button>
+        <Link to={ `/${id}`}>Link</Link>
       </div>
     </div>
   );
