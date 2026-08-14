@@ -14,6 +14,9 @@ import About from "./Pages/AboutPage";
 import DetailsPage from "./Pages/DetailsPage";
 import NotFoundPage from "./Pages/NotFoundPage";
 
+import CreateItem from "./Pages/CreateItem";
+import EditItem from "./Pages/EditItem";
+
 //Router
 import { Routes, Route } from "react-router-dom";
 
@@ -44,6 +47,17 @@ function App() {
               path="/:foodId"
               element={<DetailsPage foodList={foodList} />}
             />
+            <Route
+              path="/create"
+              element={<CreateItem setFoodList={setFoodList} />}
+            />
+            <Route
+              path="/edit/:foodId"
+              element={
+                <EditItem foodList={foodList} setFoodList={setFoodList} />
+              }
+            />
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
