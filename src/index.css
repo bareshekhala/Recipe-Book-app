@@ -22,15 +22,25 @@ body{
 
 #card{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: left;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: beige;
+  align-items: left;
+ 
+  background-color: white;
+  width: 100%;
+  max-width: 100%;
+  
   padding: 10px;
   width: 300px;
   gap:20px;
-  border-radius: 8px;
+  border-radius: 14px;
+  box-shadow: 0px 3.5772px 22.3575px #DFE6F2;
+}
+
+.card-link{
+  text-decoration: none; /* Removes text underlines */
+  color: inherit;
+  display: block;
 }
 
 #card-info{
@@ -40,9 +50,29 @@ body{
   gap:10px;
 }
 
-/* #img-wrapper{
-  height: 50px;
-} */
+.card-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#img-wrapper{
+  height: 200px;
+  width: 100%;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgb(239, 246, 250);
+}
+
+#card-btn-wrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
 
 #img-card{
   height: 50px 
@@ -73,7 +103,7 @@ p{
   flex-direction: column;
   gap: 5px;
   height: 100dvh;
-  border: 1px solid black;
+  
   width: fit-content;
   padding: 10px;
   
@@ -118,3 +148,22 @@ border: 1px solid black;
   top: 0px;
   background-color: #F5F7FB;
 }
+
+.btn-create{
+  
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 8px 16px 8px 12px;
+  background-color: #3C79F4;
+  color: white;
+  text-decoration: none; /* Removes the link underline */
+  border-radius: 8px;
+  
+}
+
+.btn-create:hover {
+  background-color: #0056b3;
+}
+
+
