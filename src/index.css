@@ -2,36 +2,21 @@
 :root { --sans: 'Roboto', sans-serif; --heading: 'Poppins', sans-serif; --mono: ui-monospace, Consolas, monospace; }
 
 body{
-  font-family: "Roboto"
+  font-family: "Roboto";
+  margin: 0;
+  overflow: hidden;
 }
-#navbar{
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 10px;
-border: 1px solid black;
-}
+
 #logo{
   width: 60px;
 }
-#sidebar{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  height: 100%;
-  border: 1px solid black;
-  width: fit-content;
-  padding: 10px;
-}
+
 #app{
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
-#footer{
-  padding: 30px;
-  border: 1px solid black;
-}
+
 
 /* ------card------ */
 
@@ -76,4 +61,60 @@ p{
 #main-view{
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: 100dvh;
+}
+
+/* ------ sidebar ------ */
+
+#sidebar{
+  /* position: fixed; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 100dvh;
+  border: 1px solid black;
+  width: fit-content;
+  padding: 10px;
+  
+}
+
+#footer{
+  padding: 30px;
+  border: 1px solid black;
+}
+
+#navbar{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+border: 1px solid black;
+}
+
+#menu-sidebar{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+/* ------ Dashboard ------ */
+
+#dashboard{
+  flex-grow: 1;/* Automatically expands to fill rest of screen */
+  min-height: 0; 
+  height: 100%;
+  overflow-y: auto; /* Enables independent scrolling for content */
+  background-color: #F5F7FB;
+  padding: 0px 40px 40px 40px;
+}
+
+#header-dashboard{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0px 20px 0px;
+  position: sticky;
+  top: 0px;
+  background-color: #F5F7FB;
 }

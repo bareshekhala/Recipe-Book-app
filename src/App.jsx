@@ -27,13 +27,13 @@ function App() {
     <>
       <div id="app">
         
-        <Navbar />
+        
 
         <div id="main-view">
           <Sidebar />
 
           <Routes>
-            <Route path="/" element={<List foodList={foodList} setFoodList={setFoodList} />}/>
+            <Route path="/" element={<List  foodList={foodList} setFoodList={setFoodList} />}/>
             <Route path="/about" element={<About />} />
             <Route path="/:foodId" element={<DetailsPage foodList={foodList} />}/>
             <Route path="/create" element={<CreateItem setFoodList={setFoodList} />}/>
@@ -43,7 +43,7 @@ function App() {
 
         </div>
 
-        <Footer />
+       
       </div>
     </>
   );

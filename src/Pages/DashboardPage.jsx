@@ -2,7 +2,12 @@ import ListItem from "../components/ListItem";
 import { Link } from "react-router-dom";
 function List({ foodList, setFoodList }) {
   return (
-    <div>
+    <div id="dashboard">
+      <header id="header-dashboard">
+        <h1>Welcome to food paradise! </h1>
+        <Link to="/create">Create</Link>
+      </header>
+
       {foodList.map((food) => {
         return (
           <ListItem
@@ -17,7 +22,7 @@ function List({ foodList, setFoodList }) {
           />
         );
       })}
-      <Link to="/create">Create</Link>
+     
     </div>
   );
 }
