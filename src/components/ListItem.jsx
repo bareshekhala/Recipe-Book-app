@@ -1,8 +1,22 @@
 import React from "react";
-import List from "../Pages/DashboardPage";
 import { Link } from "react-router-dom";
 
-function ListItem({ id, name, calories, image, servings, handleDelete }) {
+function ListItem({
+  id,
+  name,
+  calories,
+  image,
+  servings,
+  foodList,
+  setFoodList,
+}) {
+  function handleDelete(id) {
+    const newFoodList = foodList.filter((food) => {
+      return food.id !== id;
+    });
+    setFoodList(newFoodList);
+  }
+
   return (
     <div id="card">
       <div id="img-wrapper">
@@ -24,5 +38,4 @@ function ListItem({ id, name, calories, image, servings, handleDelete }) {
     </div>
   );
 }
-
 export default ListItem;
