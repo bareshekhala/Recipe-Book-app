@@ -31,7 +31,8 @@ function ListItem({
         <h3>{name}</h3>
         <p>calories: {calories}</p>
         <p>servings: {servings}</p>
-        {calories > 400 ? <p>High in calories</p> : <p>Healthy</p>}
+        {calories > 400 ? <p id="high-calories">High in calories</p> : <p id="healthy">Healthy</p>}
+
         {/*delete*/}
         <button onClick={() => setShowModal(true)}>Delete</button>
 
@@ -42,6 +43,7 @@ function ListItem({
         <button>
           <Link to={`/edit/${id}`}>Edit</Link>
         </button>
+        
       </div>
 
         {/*Are you sure part*/}
