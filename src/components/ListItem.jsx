@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function ListItem({
   id,
@@ -22,31 +23,45 @@ function ListItem({
   }
 
   return (
+    <>
+    {/*details*/}
+    <Link to={`/${id}`} className="card-link">
+
     <div id="card">
-      <div id="img-wrapper">
-        <img id="img-card" src={image} alt="foodImage" />
+      <div id="img-wrapper" style={{ backgroundImage: `url(${image})` }}>
+        {/* <img id="img-card" src={image} alt="foodImage" /> */}
       </div>
 
       <div id="card-info">
         <h3>{name}</h3>
         <p>calories: {calories}</p>
         <p>servings: {servings}</p>
-        {calories > 400 ? <p id="high-calories">High in calories</p> : <p id="healthy">Healthy</p>}
+        {calories > 400 ? (
+          <p id="high-calories">High in calories</p>
+        ) : (
+          <p id="healthy">Low in calories</p>
+        )}
 
-        {/*delete*/}
-        <button onClick={() => setShowModal(true)}>Delete</button>
+        <div id="card-btn-wrapper">
+          {/*delete*/}
+          <button onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Blocks the <Link> from opening
+            setShowModal(true)
+          }}
+            >Delete
+            </button>
 
-        {/*details*/}
-        <Link to={`/${id}`}>Link</Link>
+          {/*edit*/}
+          <button>
+            <Link to={`/edit/${id}`}>Edit</Link>
+          </button>
+        </div>
 
-        {/*edit*/}
-        <button>
-          <Link to={`/edit/${id}`}>Edit</Link>
-        </button>
         
       </div>
 
-        {/*Are you sure part*/}
+      {/*Are you sure part*/}
       {showModal && (
         <div id="modal">
           <div
@@ -60,12 +75,18 @@ function ListItem({
             }}
           >
             <h3>Are You Sure?</h3>
-            <button id="yes-btn" onClick={handleDelete}>Yes,Delete</button>
-            <button id="cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
+            <button id="yes-btn" onClick={handleDelete}>
+              Yes,Delete
+            </button>
+            <button id="cancel-btn" onClick={() => setShowModal(false)}>
+              Cancel
+            </button>
           </div>
         </div>
       )}
     </div>
+    </Link>
+    </>
   );
 }
 export default ListItem;
