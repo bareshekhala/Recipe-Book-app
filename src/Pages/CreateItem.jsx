@@ -8,7 +8,7 @@ function CreateItem(props) {
   const [caloriesValue, setCaloriesValue] = useState(0);
   const [servingValue, setServingValue] = useState(null);
   const [imageValue, setImageValue] = useState("");
-
+  const [howValue, setHowValue] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
 
   //functions
@@ -27,11 +27,20 @@ function CreateItem(props) {
   const handleImageChange = (event) => {
     setImageValue(event.target.value);
   };
+  const handleHowChange = (event) => {
+    setHowValue(event.target.value);
+  };
 
   function handleCreate(e) {
     e.preventDefault();
 
-    if (!nameValue || !caloriesValue || !servingValue || !imageValue) {
+    if (
+      !nameValue ||
+      !caloriesValue ||
+      !servingValue ||
+      !imageValue ||
+      !howValue
+    ) {
       setErrorMessage("You should fill out everything");
       return;
     }
@@ -40,8 +49,9 @@ function CreateItem(props) {
       id: crypto.randomUUID(),
       name: nameValue,
       calories: caloriesValue,
-      serving: servingValue,
+      servings: servingValue,
       image: imageValue,
+      how: howValue,
     };
 
     props.setFoodList((state) => {
@@ -54,6 +64,7 @@ function CreateItem(props) {
     <div>
       <>
         <h2>Create New Recipe</h2>
+        <hr />
         <form onSubmit={handleCreate}>
           <div>
             <label htmlFor="name">Name: </label>
@@ -92,6 +103,10 @@ function CreateItem(props) {
               onChange={handleImageChange}
               value={imageValue}
             />
+          </div>
+          <div>
+            <label htmlFor="how">Preparation:</label>
+            <textarea name="how" onChange={handleHowChange} value={howValue} />
           </div>
 
           <button type="submit">Add</button>

@@ -13,6 +13,7 @@ function EditItem({ foodList, setFoodList }) {
   const [caloriesValue, setCaloriesValue] = useState(foundFood.calories);
   const [servingValue, setServingValue] = useState(foundFood.servings);
   const [imageValue, setImageValue] = useState(foundFood.image);
+  const [howValue, setHowValue] = useState(foundFood.how);
 
   //functions
 
@@ -30,6 +31,9 @@ function EditItem({ foodList, setFoodList }) {
   const handleImageChange = (event) => {
     setImageValue(event.target.value);
   };
+  const handleHowChange = (event) => {
+    setHowValue(event.target.value);
+  };
 
   function handleEditForm(e) {
     e.preventDefault();
@@ -40,6 +44,7 @@ function EditItem({ foodList, setFoodList }) {
       calories: caloriesValue,
       servings: servingValue,
       image: imageValue,
+      how: howValue,
     };
 
     setFoodList((state) => {
@@ -53,6 +58,8 @@ function EditItem({ foodList, setFoodList }) {
     <div>
       <>
         <h2>Edit Recipe</h2>
+        <hr />
+
         <form onSubmit={handleEditForm}>
           <div>
             <label htmlFor="name">Name: </label>
@@ -91,6 +98,10 @@ function EditItem({ foodList, setFoodList }) {
               onChange={handleImageChange}
               value={imageValue}
             />
+          </div>
+          <div>
+            <label htmlFor="how">Preparation:</label>
+            <textarea name="how" value={howValue} onChange={handleHowChange} />
           </div>
 
           <button type="submit">Save</button>
