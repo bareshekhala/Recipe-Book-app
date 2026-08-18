@@ -1,6 +1,9 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+//Bootstrap
+import Button from 'react-bootstrap/Button';
+
 
 function DetailsPage(props) {
   const navigate = useNavigate();
@@ -10,16 +13,25 @@ function DetailsPage(props) {
     return food.id == params.foodId;
   });
   return (
-    foundFood ? <div>
-      <h2>Preparation</h2>
-      <h3>{foundFood.name}</h3>
-      <p>calories: {foundFood.calories}</p>
-      <p>servings: {foundFood.servings}</p>
-      {foundFood.calories > 400 ? <p> High in calories</p> : null}
-            <p>{foundFood.how}</p>
-            <button onClick={()=>navigate("/")}>Back</button>
-
-    </div> : <h3>No events found with that value</h3>
+    foundFood ? (
+      <div className="edit-wrapper">
+        <div className="edit-content" style={{width:"70%"}}>
+          <div id="img-wrapper" style={{ backgroundImage: `url(${foundFood.image})`,height:"400px" }}></div>
+          <h2>{foundFood.name}</h2>
+          <div>
+            <p>calories: {foundFood.calories}</p>
+            <p>servings: {foundFood.servings}</p>
+          </div>
+          
+          <h4>Preparation</h4>
+          {foundFood.calories > 400 ? <p> High in calories</p> : null}
+          <p>{foundFood.how}</p>
+          <Button variant="primary" onClick={() => navigate("/")}>Back</Button>
+        </div>
+      </div>
+    ) : (
+      <h3>No events found with that value</h3>
+    )
   );
 }
 

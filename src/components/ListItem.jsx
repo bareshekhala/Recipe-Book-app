@@ -51,7 +51,7 @@ function ListItem({
           <div id="card-info">
             <h3>{name}</h3>
             <p>Calories: {calories}</p>
-            <p>Servings: {servings}</p>
+            {/* <p>Servings: {servings}</p> */}
           </div>
       </Link>
 
@@ -89,7 +89,7 @@ function ListItem({
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleDelete}>
+          <Button variant="danger" onClick={handleDelete}>
             Delete
           </Button>
         </Modal.Footer>

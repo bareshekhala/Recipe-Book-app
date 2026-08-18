@@ -62,7 +62,7 @@ function EditItem({ foodList, setFoodList }) {
   return (
     <div className="edit-wrapper" >
       <>
-        <div id="edit-content">
+        <div className="edit-content">
 
         
         <h2 style={{textAlign:"left"}}>Edit Recipe</h2>

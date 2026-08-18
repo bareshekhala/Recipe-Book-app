@@ -66,11 +66,13 @@ function CreateItem(props) {
     navigate("/");
   }
   return (
-    <div>
+    <div className="edit-wrapper" >
       <>
-        <h2>Create New Recipe</h2>
+        <div id="edit-content">
+
+        <h2 style={{textAlign:"left"}}>Create New Recipe</h2>
         
-        <Form onSubmit={handleCreate}>
+        <Form onSubmit={handleCreate} style={{width:"600px", display:"flex", flexDirection:"column", gap:"16px" }}>
           <div>
             <Form.Label htmlFor="name">Name: </Form.Label>
             <Form.Control
@@ -121,6 +123,7 @@ function CreateItem(props) {
         {/* <Button variant="primary" type="button" onClick={() => navigate("/")}>
           Back
         </Button> */}
+        </div>
       </>
     </div>
   );

@@ -166,13 +166,14 @@ p{
   /* position: fixed; */
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   gap: 5px;
   height: 100dvh;
-  
+
   width: fit-content;
   padding: 10px;
   width: 280px;
-  
+
 }
 
 #menu-sidebar{
@@ -285,12 +286,23 @@ gap: 8px;
   align-items: center;
   background-color: #F5F7FB;
   width: 100%;
+  padding: 60px;
   
 }
 
-#edit-content{
+.edit-content{
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+#about-background{
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+  justify-content: start;
+  align-items: left;
+  background-color: #F5F7FB;
+  width: 100%;
 }
 
