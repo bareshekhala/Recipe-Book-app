@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -8,8 +9,8 @@ function Sidebar() {
     <div id='sidebar'>
       <Navbar/>
       <div id="menu-sidebar">
-        <Link to = "/" >Home</Link>
-        <Link to = "/about" href="">About</Link>
+        <NavLink to = "/" >Home</NavLink>
+        <NavLink to = "/about" href="">About</NavLink>
       </div>
       <Footer/>
       
