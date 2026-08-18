@@ -27,10 +27,9 @@ function ListItem({
   }
 
   return (
-    <>
-      {/*details*/}
+    <div id="card">
       <Link to={`/${id}`} className="card-link">
-        <div id="card">
+        
           <div id="img-wrapper" style={{ backgroundImage: `url(${image})` }}>
             {/* <img id="img-card" src={image} alt="foodImage" /> */}
             {calories > 400 ? (
@@ -44,8 +43,10 @@ function ListItem({
             <h3>{name}</h3>
             <p>Calories: {calories}</p>
             <p>Servings: {servings}</p>
+          </div>
+      </Link>
 
-            <div id="card-btn-wrapper">
+      <div id="card-btn-wrapper">
               {/* Delete Button */}
               <button
                 type="button"
@@ -69,7 +70,7 @@ function ListItem({
                 Edit
               </Link>
             </div>
-          </div>
+
 
           {/*Are you sure part*/}
           {showModal && (
@@ -94,9 +95,8 @@ function ListItem({
               </div>
             </div>
           )}
-        </div>
-      </Link>
-    </>
+    </div>
   );
 }
+
 export default ListItem;
