@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Form from 'react-bootstrap/Form';
+
 function SearchBar(props) {
 function handleSearch(){
     props.setQuery(event.target.value);
@@ -7,10 +9,10 @@ function handleSearch(){
 return (
     <div id='search' >
 
-      <input type="text"
+      <Form.Control type="search"
       onChange={handleSearch}
       value={props.query}
-      placeholder='Search' />
+      placeholder='Search recipes...' />
     </div>
   )
 }

@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
+
 //icons
 import TrashIcon from "../app-assets/trash-icon.svg"
 import EditIcon from "../app-assets/edit-icon.svg"
+
+//bootstrap
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function ListItem({
   id,
@@ -16,7 +21,11 @@ function ListItem({
   setFoodList,
 }) {
   // For "Are you sure functionality" a new state is defined
-  const [showModal, setShowModal] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
   function handleDelete() {
     const newFoodList = foodList.filter((food) => {
@@ -50,11 +59,9 @@ function ListItem({
               {/* Delete Button */}
               <button
                 type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation(); // Prevents parent card link from opening
-                  setShowModal(true);
-                }}
+                onClick={handleShow}
+                  // setShowModal(true);
+                
               >
                 <img src={TrashIcon} alt="" />
                 Delete
@@ -73,28 +80,27 @@ function ListItem({
 
 
           {/*Are you sure part*/}
-          {showModal && (
-            <div id="modal">
-              <div
-                id="modalBox"
-                style={{
-                  backgroundColor: "gold",
-                  padding: "20px",
-                  borderRadius: "8px",
-                  width: "300px",
-                  textAlign: "center",
-                }}
-              >
-                <h3>Are You Sure?</h3>
-                <button id="yes-btn" onClick={handleDelete}>
-                  Yes,Delete
-                </button>
-                <button id="cancel-btn" onClick={() => setShowModal(false)}>
-                  Cancel
-                </button>
-              </div>
-            </div>
-          )}
+          <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Are You Sure that you want to delete?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> This action is permanent!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
+
+            
+            
+           
+        
     </div>
   );
 }

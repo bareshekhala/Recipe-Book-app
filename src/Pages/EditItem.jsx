@@ -2,6 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
+//Bootstrap
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 function EditItem({ foodList, setFoodList }) {
   const navigate = useNavigate();
 
@@ -55,62 +60,75 @@ function EditItem({ foodList, setFoodList }) {
     navigate("/");
   }
   return (
-    <div>
+    <div className="edit-wrapper" >
       <>
-        <h2>Edit Recipe</h2>
-        <hr />
+        <div id="edit-content">
 
-        <form onSubmit={handleEditForm}>
-          <div>
-            <label htmlFor="name">Name: </label>
-            <input
+        
+        <h2 style={{textAlign:"left"}}>Edit Recipe</h2>
+        
+
+         <Form onSubmit={handleEditForm} style={{width:"600px", display:"flex", flexDirection:"column", gap:"16px" }} >
+          
+           <div>
+            <Form.Label htmlFor="name">Name: </Form.Label>
+            <Form.Control
               type="text"
               name="name"
               onChange={handleNameChange}
               value={nameValue}
             />
           </div>
-
+          
           <div>
-            <label htmlFor="calories">Calories: </label>
-            <input
+            <Form.Label htmlFor="calories">Calories: </Form.Label>
+            <Form.Control
               type="number"
               name="calories"
               onChange={handleCaloriesChange}
               value={caloriesValue}
             />
           </div>
-
+           
           <div>
-            <label htmlFor="serving">Serving: </label>
-            <input
+            <Form.Label htmlFor="serving">Serving: </Form.Label>
+            <Form.Control
               type="number"
               name="serving"
               onChange={handleServingChange}
               value={servingValue}
             />
           </div>
+           
           <div>
-            <label htmlFor="image">Image URL: </label>
-            <input
+            <Form.Label htmlFor="image">Image URL: </Form.Label>
+            <Form.Control
               type="url"
               name="image"
               onChange={handleImageChange}
               value={imageValue}
             />
           </div>
+           
           <div>
-            <label htmlFor="how">Preparation:</label>
-            <textarea name="how" value={howValue} onChange={handleHowChange} />
+            <Form.Label htmlFor="how">Preparation:</Form.Label>
+            <Form.Control as="textarea" rows={3} name="how" onChange={handleHowChange} value={howValue} />
           </div>
 
-          <button type="submit">Save</button>
-        </form>
-        <button type="button" onClick={() => navigate("/")}>
+          <Button variant="primary" type="submit" style={{marginTop:"20px"}}>Save Changes</Button>
+
+          
+        </Form>
+
+
+        {/* <Button variant="secondary" type="button" onClick={() => navigate("/")}>
           Back
-        </button>
+        </Button> */}
+
+        </div>
       </>
     </div>
+
   );
 }
 

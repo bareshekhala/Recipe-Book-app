@@ -275,4 +275,22 @@ gap: 8px;
   background-color: #0056b3;
 }
 
+/* ------ Edit ------ */
+
+.edit-wrapper{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F7FB;
+  width: 100%;
+  
+}
+
+#edit-content{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 

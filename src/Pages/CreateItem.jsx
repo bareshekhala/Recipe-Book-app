@@ -2,6 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+//Bootstrap
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
+
 function CreateItem(props) {
   const navigate = useNavigate();
   const [nameValue, setNameValue] = useState("");
@@ -64,11 +69,11 @@ function CreateItem(props) {
     <div>
       <>
         <h2>Create New Recipe</h2>
-        <hr />
-        <form onSubmit={handleCreate}>
+        
+        <Form onSubmit={handleCreate}>
           <div>
-            <label htmlFor="name">Name: </label>
-            <input
+            <Form.Label htmlFor="name">Name: </Form.Label>
+            <Form.Control
               type="text"
               name="name"
               onChange={handleNameChange}
@@ -77,8 +82,8 @@ function CreateItem(props) {
           </div>
 
           <div>
-            <label htmlFor="calories">Calories: </label>
-            <input
+            <Form.Label htmlFor="calories">Calories: </Form.Label>
+            <Form.Control
               type="number"
               name="calories"
               onChange={handleCaloriesChange}
@@ -87,8 +92,8 @@ function CreateItem(props) {
           </div>
 
           <div>
-            <label htmlFor="serving">Serving: </label>
-            <input
+            <Form.Label htmlFor="serving">Serving: </Form.Label>
+            <Form.Control
               type="number"
               name="serving"
               onChange={handleServingChange}
@@ -96,8 +101,8 @@ function CreateItem(props) {
             />
           </div>
           <div>
-            <label htmlFor="image">Image URL: </label>
-            <input
+            <Form.Label htmlFor="image">Image URL: </Form.Label>
+            <Form.Control
               type="url"
               name="image"
               onChange={handleImageChange}
@@ -105,17 +110,17 @@ function CreateItem(props) {
             />
           </div>
           <div>
-            <label htmlFor="how">Preparation:</label>
-            <textarea name="how" onChange={handleHowChange} value={howValue} />
+            <Form.Label htmlFor="how">Preparation:</Form.Label>
+            <Form.Control as="textarea" rows={3} name="how" onChange={handleHowChange} value={howValue} />
           </div>
 
-          <button type="submit">Add</button>
+          <Button variant="primary" type="submit"> Save & Add</Button>
 
           {errorMessage && <p>{errorMessage}</p>}
-        </form>
-        <button type="button" onClick={() => navigate("/")}>
+        </Form>
+        {/* <Button variant="primary" type="button" onClick={() => navigate("/")}>
           Back
-        </button>
+        </Button> */}
       </>
     </div>
   );
