@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
+//icons
+import TrashIcon from "../app-assets/trash-icon.svg"
+import EditIcon from "../app-assets/edit-icon.svg"
+
 function ListItem({
   id,
   name,
@@ -24,69 +28,74 @@ function ListItem({
 
   return (
     <>
-    {/*details*/}
-    <Link to={`/${id}`} className="card-link">
-
-    <div id="card">
-      <div id="img-wrapper" style={{ backgroundImage: `url(${image})` }}>
-        {/* <img id="img-card" src={image} alt="foodImage" /> */}
-        {calories > 400 ? (
-          <p className="badge high-calories">High in calories</p>
-        ) : (
-          <p className="badge healthy">Low in calories</p>
-        )}
-      </div>
-
-      <div id="card-info">
-        <h3>{name}</h3>
-        <p>calories: {calories}</p>
-        <p>servings: {servings}</p>
-        
-
-        <div id="card-btn-wrapper">
-          {/*delete*/}
-          <button onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation(); // Blocks the <Link> from opening
-            setShowModal(true)
-          }}
-            >Delete
-            </button>
-
-          {/*edit*/}
-          <button>
-            <Link to={`/edit/${id}`}>Edit</Link>
-          </button>
-        </div>
-
-        
-      </div>
-
-      {/*Are you sure part*/}
-      {showModal && (
-        <div id="modal">
-          <div
-            id="modalBox"
-            style={{
-              backgroundColor: "gold",
-              padding: "20px",
-              borderRadius: "8px",
-              width: "300px",
-              textAlign: "center",
-            }}
-          >
-            <h3>Are You Sure?</h3>
-            <button id="yes-btn" onClick={handleDelete}>
-              Yes,Delete
-            </button>
-            <button id="cancel-btn" onClick={() => setShowModal(false)}>
-              Cancel
-            </button>
+      {/*details*/}
+      <Link to={`/${id}`} className="card-link">
+        <div id="card">
+          <div id="img-wrapper" style={{ backgroundImage: `url(${image})` }}>
+            {/* <img id="img-card" src={image} alt="foodImage" /> */}
+            {calories > 400 ? (
+              <p className="badge high-calories">High in calories</p>
+            ) : (
+              <p className="badge healthy">Low in calories</p>
+            )}
           </div>
+
+          <div id="card-info">
+            <h3>{name}</h3>
+            <p>Calories: {calories}</p>
+            <p>Servings: {servings}</p>
+
+            <div id="card-btn-wrapper">
+              {/* Delete Button */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation(); // Prevents parent card link from opening
+                  setShowModal(true);
+                }}
+              >
+                <img src={TrashIcon} alt="" />
+                Delete
+              </button>
+
+              {/* Edit Link (Styled as a button directly) */}
+              <Link
+                to={`/edit/${id}`}
+                className="btn-edit"
+                onClick={(e) => e.stopPropagation()} // Prevents parent card link from opening
+              >
+                <img src={EditIcon} alt="" />
+                Edit
+              </Link>
+            </div>
+          </div>
+
+          {/*Are you sure part*/}
+          {showModal && (
+            <div id="modal">
+              <div
+                id="modalBox"
+                style={{
+                  backgroundColor: "gold",
+                  padding: "20px",
+                  borderRadius: "8px",
+                  width: "300px",
+                  textAlign: "center",
+                }}
+              >
+                <h3>Are You Sure?</h3>
+                <button id="yes-btn" onClick={handleDelete}>
+                  Yes,Delete
+                </button>
+                <button id="cancel-btn" onClick={() => setShowModal(false)}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-      )}
-    </div>
-    </Link>
+      </Link>
     </>
   );
 }

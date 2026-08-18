@@ -95,16 +95,53 @@ body{
 }
 
 
-
 #card-btn-wrapper{
   display: flex;
   flex-direction: row;
   gap: 8px;
 }
 
-#img-card{
-  height: 50px 
+/* #card-btn-wrapper button{
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+} */
+
+#card-btn-wrapper button,
+#card-btn-wrapper .btn-edit {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none; /* Removes link underline */
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
 }
+
+
+#card-btn-wrapper button{
+  background-color: white;
+  border: 1px solid #DFE6F2;
+  color: #000000;
+  font-size: inherit;
+}
+
+#card-btn-wrapper .btn-edit{
+
+  background-color: #000000;
+  color: white;
+}
+
+/* #img-card{
+  height: 50px 
+} */
 
 h3{
   margin: 0;
