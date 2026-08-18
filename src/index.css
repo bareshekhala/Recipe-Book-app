@@ -68,7 +68,33 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgb(239, 246, 250);
+  position: relative;
 }
+
+.badge{
+  
+  position: absolute;
+  bottom: 12px; /* Distance from bottom */
+  right: 12px;  /* Distance from right edge (or use left: 12px if you prefer left) */
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 20px; /* Makes it a rounded pill */
+  font-size: 0.90rem;
+  color: white;
+  border: rgba(255, 255, 255, 0.231) 1px solid;
+  box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.5)
+}
+
+/* badge Color variations */
+.high-calories {
+  background-color: #f39c12; 
+}
+
+.healthy {
+  background-color: #76C263; 
+}
+
+
 
 #card-btn-wrapper{
   display: flex;
@@ -191,6 +217,8 @@ gap: 8px;
   position: sticky;
   top: 0px;
   background-color: #F5F7FB;
+  
+  z-index: 2;
 }
 
 .btn-create{

@@ -30,17 +30,18 @@ function ListItem({
     <div id="card">
       <div id="img-wrapper" style={{ backgroundImage: `url(${image})` }}>
         {/* <img id="img-card" src={image} alt="foodImage" /> */}
+        {calories > 400 ? (
+          <p className="badge high-calories">High in calories</p>
+        ) : (
+          <p className="badge healthy">Low in calories</p>
+        )}
       </div>
 
       <div id="card-info">
         <h3>{name}</h3>
         <p>calories: {calories}</p>
         <p>servings: {servings}</p>
-        {calories > 400 ? (
-          <p id="high-calories">High in calories</p>
-        ) : (
-          <p id="healthy">Low in calories</p>
-        )}
+        
 
         <div id="card-btn-wrapper">
           {/*delete*/}
